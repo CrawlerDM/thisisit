@@ -126,6 +126,17 @@ Inzending ID: ${submissionId}
   }
 });
 
+app.get('/api/dates', async (req, res) => {
+    try {
+      const result = await pool.query('SELECT * FROM submissions ORDER BY submitted_at DESC');
+      res.json(result.rows);
+    } catch (err) {
+      console.error('Error fetching submissions:', err);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+  
+
 app.listen(port, () => {
   console.log(`Backend running at http://localhost:${port}`);
 });
