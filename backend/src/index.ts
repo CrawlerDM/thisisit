@@ -50,7 +50,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // Example GET route
-app.get('/', async (req, res) => {
+app.get('/api', async (req, res) => {
   try {
     const result = await pool.query('SELECT NOW()');
     res.json({ time: result.rows[0].now });
@@ -64,7 +64,7 @@ app.get('/', async (req, res) => {
 });
 
 // Existing route to check the name and set a cookie
-app.post('/submit-name', (req, res) => {
+app.post('/api/submit-name', (req, res) => {
   let { name } = req.body;
 
   // Clean the name: trim, remove diacritics, to lowercase, collapse spaces
@@ -85,7 +85,7 @@ app.post('/submit-name', (req, res) => {
 });
 
 // New endpoint to store form data and send an email
-app.post('/submit-form', async (req, res) => {
+app.post('/api/submit-form', async (req, res) => {
   const { gsm, selectedDays } = req.body;
 
   if (!gsm || !selectedDays) {

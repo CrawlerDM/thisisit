@@ -17,7 +17,7 @@ const SignedUpForm: React.FC = () => {
 
     const payload = { gsm, selectedDays };
     try {
-      const response = await fetch('http://localhost:4000/submit-form', {
+      const response = await fetch('/api/submit-form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

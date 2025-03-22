@@ -8,7 +8,7 @@ const NameForm: React.FC = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:4000/submit-name', {
+      const response = await fetch('/api/submit-name', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include', // Important to include cookies
